@@ -9,5 +9,7 @@ let gameMoves = ["Rock" , "Paper" , "Sicssors"]
 let userMove = Number(prompt("Press 0 for Rock / 1 for Paper / 2 Scissors"))
 
 
+// Will asign games Move from gameArray according to user selected number 
+userMove = gameMoves[userMove];
 
 
