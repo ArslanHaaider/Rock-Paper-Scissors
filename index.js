@@ -6,6 +6,8 @@ let gameMoves = ["Rock" , "Paper" , "Sicssors"]
 
 // Have to ask user to chose there move
 
-let userMove = Number(prompt("Press 1 for Rock / 2 for Paper / 3 Scissors"))
+let userMove = Number(prompt("Press 0 for Rock / 1 for Paper / 2 Scissors"))
+
+
 
 
