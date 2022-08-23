@@ -17,38 +17,42 @@ function getuserMove(){
     return gameMoves[validNumber]
 }
 
-// getuserMove()
+
+
 
 // Will get computers Move
 
-getComputersMove = () => gameMoves[Math.floor(Math.random() * 3)];
-
-
-
-
+getComputersMove = () => gameMoves[Math.floor(Math.random() * 3)]
 
 // Main game function 
 
 function Game() {
-    let game = true;
-    while (game) {
-        let userMove = getuserMove();
-        let computerMove = getComputersMove();
-        console.log(userMove)
-        console.log(computerMove)
-        //Defining Conditions of win and loss! 
-        if (userMove === "Rock" & computerMove === "Scissor" || userMove === "Paper" & computerMove === "Rock" || userMove === "Scissor" & computerMove =="Paper"){
-            console.log(`User Wins  ${userMove} beats ${computerMove}`)
-            game = false
-        }else if (userMove === computerMove){
-            console.log ("Its Draw")
-            continue
-        }else{
-            console.log(`Computer Wins ${computerMove} beats ${userMove}`)
-            game = false    
-        }
 
+    // A for loop to play game four times  
+
+    for (let i = 0 ; i <= 5 ; i++){
+        let game = true
+        while (game) {
+            let userMove = getuserMove();
+            let computerMove = getComputersMove();
+            console.log(userMove)
+            console.log(computerMove)
+
+            //Defining Conditions of win and loss! 
+            if (userMove === "Rock" & computerMove === "Scissor" || userMove === "Paper" & computerMove === "Rock" || userMove === "Scissor" & computerMove =="Paper"){
+                console.log(`User Wins  ${userMove} beats ${computerMove}`)
+
+                game = false
+            }else if (userMove === computerMove){
+                console.log ("Its Draw")
+
+                continue
+            }else{
+                console.log(`Computer Wins ${computerMove} beats ${userMove}`)
+                game = false    
+            }
+    
+        }
     }
 }
-
 Game()
