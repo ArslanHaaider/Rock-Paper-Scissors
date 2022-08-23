@@ -33,13 +33,13 @@ function Game() {
         console.log(computerMove)
         //Defining Conditions of win and loss! 
         if (userMove === "Rock" & computerMove === "Scissor" || userMove === "Paper" & computerMove === "Rock" || userMove === "Scissor" & computerMove =="Paper"){
-            console.log("User wins")
+            console.log(`User Wins  ${userMove} beats ${computerMove}!`)
             game = false
         }else if (userMove === computerMove){
             console.log ("Its Draw")
             continue
         }else{
-            console.log("Computer wins")
+            console.log(`Computer Wins ${computerMove} beats ${userMove}!`)
             game = false    
         }
 
