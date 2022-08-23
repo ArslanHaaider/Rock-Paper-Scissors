@@ -20,14 +20,30 @@ getComputersMove = () => gameMoves[Math.floor(Math.random() * 3)];
 
 
 
-//Defining Conditions of win and loss! 
 
-if (getuserMove === "Rock" & getComputersMove === "Scissor" || getuserMove === "Paper" & getComputersMove === "Rock" || getuserMove === "Scissor" & getComputersMove =="Paper"){
-    console.log("User wins")
-}else if (getuserMove === getComputersMove){
-    console.log ("Its Draw")
-}else{
-    console.log("Computer wins")    
+
+// Main game function 
+
+function Game() {
+    let game = true;
+    while (game) {
+        let userMove = getuserMove();
+        let computerMove = getComputersMove();
+        console.log(userMove)
+        console.log(computerMove)
+        //Defining Conditions of win and loss! 
+        if (userMove === "Rock" & computerMove === "Scissor" || userMove === "Paper" & computerMove === "Rock" || userMove === "Scissor" & computerMove =="Paper"){
+            console.log("User wins")
+            game = false
+        }else if (userMove === computerMove){
+            console.log ("Its Draw")
+            continue
+        }else{
+            console.log("Computer wins")
+            game = false    
+        }
+
+    }
 }
 
-
+Game()
