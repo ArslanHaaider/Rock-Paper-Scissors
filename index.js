@@ -9,10 +9,15 @@ let userMove ;
 
 // Will asign games Move from gameArray according to user selected number 
 
-getuserMove = () => gameMoves[Number(prompt("Press 0 for Rock / 1 for Paper / 2 Scissors"))];
+function getuserMove(){
+    let validNumber =  Number(prompt("Press 0 for Rock \n1 for Paper \n2 Scissors"))
+    while (validNumber <0 || validNumber > 2){
+        validNumber = Number(prompt( " Enter a valid number \n Press 0 for Rock \n1 for Paper\n2 Scissors"))
+    }
+    return gameMoves[validNumber]
+}
 
-
-
+// getuserMove()
 
 // Will get computers Move
 
@@ -33,13 +38,13 @@ function Game() {
         console.log(computerMove)
         //Defining Conditions of win and loss! 
         if (userMove === "Rock" & computerMove === "Scissor" || userMove === "Paper" & computerMove === "Rock" || userMove === "Scissor" & computerMove =="Paper"){
-            console.log(`User Wins  ${userMove} beats ${computerMove}!`)
+            console.log(`User Wins  ${userMove} beats ${computerMove}`)
             game = false
         }else if (userMove === computerMove){
             console.log ("Its Draw")
             continue
         }else{
-            console.log(`Computer Wins ${computerMove} beats ${userMove}!`)
+            console.log(`Computer Wins ${computerMove} beats ${userMove}`)
             game = false    
         }
 
