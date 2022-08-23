@@ -27,32 +27,40 @@ getComputersMove = () => gameMoves[Math.floor(Math.random() * 3)]
 // Main game function 
 
 function Game() {
+    let computerWins = 0;
+    let userWins = 0;
 
     // A for loop to play game four times  
 
-    for (let i = 0 ; i <= 5 ; i++){
-        let game = true
-        while (game) {
+    for (let i = 0 ; i <5 ; i++){
+        let round = true
+        while (round) {
             let userMove = getuserMove();
             let computerMove = getComputersMove();
             console.log(userMove)
             console.log(computerMove)
-
             //Defining Conditions of win and loss! 
             if (userMove === "Rock" & computerMove === "Scissor" || userMove === "Paper" & computerMove === "Rock" || userMove === "Scissor" & computerMove =="Paper"){
                 console.log(`User Wins  ${userMove} beats ${computerMove}`)
-
-                game = false
+                userWins += 1;
+                round = false
             }else if (userMove === computerMove){
                 console.log ("Its Draw")
-
                 continue
             }else{
                 console.log(`Computer Wins ${computerMove} beats ${userMove}`)
-                game = false    
+                computerWins += 1
+                round = false    
             }
     
         }
+    }
+    // Declaring the winner of five round game 
+    if (computerWins > userWins){
+        console.log(`Computer wins with  ${computerWins} \n User with ${userWins} `)
+    }else{
+        console.log(`User wins with  ${userWins} \n Computer with ${computerWins} `)
+
     }
 }
 Game()
