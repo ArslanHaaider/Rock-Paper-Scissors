@@ -1,0 +1,56 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+main{
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.gameScreen{
+    background-color: white;
+    display: flex;
+    width: 50%;
+    height: 50%;
+    align-items: center;
+}
+
+.userMoveImg{
+    width: 50%;
+    height: 70%;
+    background-color: white;
+    border: 3px solid orange;
+
+    
+}
+.computersMoveImg{
+    width: 50%;
+    height: 70%;
+    background-color: white;
+    border: 3px solid red;
+}
+.buttons{
+    width: 60px;
+    display: flex;
+    align-items:center;
+    justify-content: space-around;
+    width: 50%;
+    height: 10%;
+    border:1px solid pink;
+}
+.userMove{
+    width: 45%;
+    height: 50%;
+}
+.restart{
+    width: 45%;
+    height: 50%;
+}
