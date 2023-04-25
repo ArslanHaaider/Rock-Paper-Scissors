@@ -14,7 +14,11 @@ main{
     justify-content: center;
 
 }
-
+.gameInfo{
+    color: white;
+    font-size: 60px;
+    height: 200px;
+}
 .gameScreen{
     background-color: white;
     display: flex;
@@ -27,7 +31,7 @@ main{
     width: 50%;
     height: 70%;
     background-color: white;
-    border: 3px solid orange;
+    border: 3px solid black;
 
     
 }
@@ -35,7 +39,7 @@ main{
     width: 50%;
     height: 70%;
     background-color: white;
-    border: 3px solid red;
+    border: 3px solid black;
 }
 .buttons{
     width: 60px;
@@ -44,7 +48,11 @@ main{
     justify-content: space-around;
     width: 50%;
     height: 10%;
-    border:1px solid pink;
+
+}
+.buttons img{
+    width: 70%;
+    height: 70%;
 }
 .userMove{
     width: 45%;
@@ -53,4 +61,27 @@ main{
 .restart{
     width: 45%;
     height: 50%;
+}
+
+.userMoveImg img{
+    width: 50%;
+    height: 80%;
+    margin: auto;
+    display: block;
+}
+.computersMoveImg img{
+    width: 50%;
+    height: 80%;
+    margin: auto;
+    display: block;
+}
+.results{
+    color: white;
+    font-size: 40px;
+}
+
+.playAgain{
+    background-color: white;
+    color: black;
+    width: 100px;
 }

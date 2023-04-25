@@ -4,70 +4,137 @@ let gameMoves = ["Rock", "Paper", "Sicssor"];
 
 let userMove;
 
+
 // Will asign games Move from gameArray according to user selected number
+userImage = document.querySelector('.userMoveImg');
+computerImage = document.querySelector('.computersMoveImg');
 
 function getuserMove() {
-  let validNumber = Number(
-    prompt("Press 0 for Rock \n1 for Paper \n2 Scissors")
-  );
-  while (validNumber < 0 || validNumber > 2) {
-    validNumber = Number(
-      prompt(
-        " Enter a valid number \n Press 0 for Rock \n1 for Paper\n2 Scissors"
-      )
-    );
+  switch(this.classList[1]){
+    case 'rock':
+      userMove = "Rock";
+      userImage.innerHTML = "<img src='./images/rock-svgrepo-com.svg' alt='rock'>"
+      break;
+    case 'paper':
+      userMove = "Paper";
+      userImage.innerHTML = "<img src='./images/paper-svgrepo-com.svg' alt='rock'>"
+      break;
+    case 'scissors':
+      userMove = "Scissor";
+      userImage.innerHTML = "<img src='./images/scissors-svgrepo-com.svg' alt='rock'>"
+      return ;
+      break;
+    default:
   }
-  return gameMoves[validNumber];
 }
+
+const playButtons  = document.querySelectorAll('.userMove');
+playButtons.forEach(element => {element.addEventListener('click',getuserMove)
+});
+
 
 // Will get computers Move
 
 getComputersMove = () => gameMoves[Math.floor(Math.random() * 3)];
 
 // Main game function to play game 
+Results = document.querySelector('.results');
+let userWinscounter = 0;
+let computerWinsCounter = 0;
+let continues = true;
 
-function playGame() {
-  let computerWins = 0;
-  let userWins = 0;
-
-  // A for loop to play game four times
-
-  for (let i = 0; i < 5; i++) {
-    let round = true;
-    while (round) {
-      let userMove = getuserMove();
-      let computerMove = getComputersMove();
-      console.log(userMove);
-      console.log(computerMove);
-      //Defining Conditions of win and loss!
-      if (
-        (userMove === "Rock") & (computerMove === "Scissor") ||
-        (userMove === "Paper") & (computerMove === "Rock") ||
-        (userMove === "Scissor") & (computerMove == "Paper")
-      ) {
-        console.log(`User Wins  ${userMove} beats ${computerMove}`);
-        userWins += 1;
-        round = false;
-      } else if (userMove === computerMove) {
-        console.log("Its Draw");
-        continue;
-      } else {
-        console.log(`Computer Wins ${computerMove} beats ${userMove}`);
-        computerWins += 1;
-        round = false;
-      }
-    }
+function resultCheck(){
+  if (userWinscounter === 5){
+    Results.innerHTML = "<button class='playAgain'>Game Over 😎😍 You Won! Play Again</button>"
+    PlayAgain = document.querySelector('.playAgain');
+    PlayAgain.addEventListener('click',()=>{location.reload()});
+    userWinscounter = 0;
+    computerWinsCounter = 0;
+    playButtons.forEach(element => {element.disabled = true
   }
-  // Declaring the winner of five round game
+);}
+  else if(computerWinsCounter === 5){
 
-  if (computerWins > userWins) {
-    console.log(
-      `Computer wins with  ${computerWins} \n User with ${userWins} `
-    );
-  } else {
-    console.log(
-      `User wins with  ${userWins} \n Computer with ${computerWins} `
-    );
+    Results.innerHTML = "<button class='playAgain'>Game Over 😭 😱 You Lost to the Computer! Play Again</button>"
+    PlayAgain = document.querySelector('.playAgain');
+    PlayAgain.addEventListener('click',()=>{location.reload()});
+    userWinscounter = 0;
+    computerWinsCounter = 0;
+    playButtons.forEach(element => {element.disabled = true
+  }
+);}
+}
+
+
+function playGame(){
+  gameInfo = document.querySelector('.gameInfo');
+  
+  let computerMove = getComputersMove();
+
+  //WHILE LOOP WHICH STOPS AFTER a PLAYER WON 5 TIMES
+  switch(computerMove){
+    case 'Rock':
+        computerImage.innerHTML = "<img src='./images/rock-svgrepo-com.svg' alt='rock'>";
+      if(userMove === "Rock"){
+        Results.textContent =  "Draw";
+        gameInfo.textContent = `User Score: ${userWinscounter} Computer Score: ${computerWinsCounter}`;
+        resultCheck();
+      }else if(userMove === "Paper"){
+        userWinscounter ++;
+        Results.textContent = "You Win";
+        gameInfo.textContent = `User Score: ${userWinscounter} Computer Score: ${computerWinsCounter}`;
+        resultCheck();
+      }else{
+        computerWinsCounter ++;
+        Results.textContent = "You Lose";
+        gameInfo.textContent = `User Score: ${userWinscounter} Computer Score: ${computerWinsCounter}`;
+        resultCheck();
+        
+        
+      }
+      break;
+    case 'Paper':
+      computerImage.innerHTML = "<img src='./images/paper-svgrepo-com.svg' alt='rock'>";
+      if(userMove === "Rock"){
+        computerWinsCounter ++;
+        Results.textContent =  "You Lose";
+        gameInfo.textContent = `User Score: ${userWinscounter} Computer Score: ${computerWinsCounter}`;
+        resultCheck();
+      }else if(userMove === "Paper"){
+        Results.textContent = "Draw";
+      }else{
+        userWinscounter ++;
+        Results.textContent =  "You Win";
+        gameInfo.textContent = `User Score: ${userWinscounter} Computer Score: ${computerWinsCounter}`;
+        resultCheck();
+
+      }
+      break;
+    case 'Scissor':
+      computerImage.innerHTML = "<img src='./images/scissors-svgrepo-com.svg' alt='rock'>";
+      if(userMove === "Rock"){
+        userWinscounter ++;
+        Results.textContent =  "You Win";
+        gameInfo.textContent = `User Score: ${userWinscounter} Computer Score: ${computerWinsCounter}`;
+        resultCheck();
+        
+      }else if(userMove === "Paper"){
+        computerWinsCounter ++;
+        Results.textContent =  "You Lose";
+        gameInfo.textContent = `User Score: ${userWinscounter} Computer Score: ${computerWinsCounter}`;
+        resultCheck();
+      }else{
+        Results.textContent =  "Draw";
+        resultCheck();
+        
+      }
+      break;
+    default:
   }
 }
-playGame();
+playButtons.forEach(element => {element.addEventListener('click',playGame)
+});
+
+PlayAgain = document.querySelector('.playAgain');
+
+PlayAgain.addEventListener('click',()=>{location.reload()});
